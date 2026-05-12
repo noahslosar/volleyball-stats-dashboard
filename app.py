@@ -1,5 +1,4 @@
 import streamlit as st
-import subprocess
 import sqlite3
 import os
 import pandas as pd
@@ -10,15 +9,8 @@ import numpy as np
 # Set page config
 st.set_page_config(page_title="Volleyball Stats Dashboard", layout="wide")
 
-# Clone the repository if needed
-repo_url = "https://github.com/noahslosar/315_Proj1"
-repo_path = "cloned_repo"
-
-if not os.path.exists(repo_path):
-    subprocess.run(["git", "clone", repo_url, repo_path], check=True)
-
-# Path to the database file
-db_file_path = os.path.join(repo_path, "volleyball_stats.db")
+# Path to the database file (now included locally)
+db_file_path = "volleyball_stats.db"
 
 # Connect to the database
 conn = sqlite3.connect(db_file_path)
@@ -121,7 +113,7 @@ with tab1:
                        color_discrete_sequence=px.colors.qualitative.Set2)
     
     fig1.update_layout(height=400, showlegend=True)
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, width='stretch')
     
     # Position Distribution Pie Chart
     st.header("Team Composition by Position")
@@ -131,7 +123,7 @@ with tab1:
                      color_discrete_sequence=px.colors.qualitative.Set3)
     fig_pie.update_traces(textposition='inside', textinfo='percent+label')
     fig_pie.update_layout(height=400)
-    st.plotly_chart(fig_pie, use_container_width=True)
+    st.plotly_chart(fig_pie, width='stretch')
 
 with tab2:
     st.header("Attack Statistics")
@@ -143,7 +135,7 @@ with tab2:
                       title="Attack Efficiency vs Points (bubble size = Games Played)",
                       color_discrete_sequence=px.colors.qualitative.Plotly)
     fig2.update_layout(height=400)
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width='stretch')
     
     # Position Performance Heatmap
     st.subheader("Position Performance Heatmap")
@@ -160,7 +152,7 @@ with tab2:
         colorbar=dict(title="Average Value")
     ))
     fig3.update_layout(title="Average Stats by Position", height=400)
-    st.plotly_chart(fig3, use_container_width=True)
+    st.plotly_chart(fig3, width='stretch')
     
     # Top Servers Chart
     st.subheader("Top Serve Performers")
@@ -169,7 +161,7 @@ with tab2:
                   title="Top 8 Players by Ace Percentage",
                   color_discrete_sequence=px.colors.qualitative.Pastel)
     fig4.update_layout(height=400)
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, width='stretch')
 
 with tab3:
     st.header("Defense Statistics")
@@ -197,7 +189,7 @@ with tab3:
             title=f"Comprehensive Stats for {selected_player}",
             height=500
         )
-        st.plotly_chart(fig_radar, use_container_width=True)
+        st.plotly_chart(fig_radar, width='stretch')
         
         # Player stats table
         st.subheader(f"Detailed Statistics for {selected_player}")
@@ -212,14 +204,14 @@ with tab3:
                         title="Top 5 Players by Total Digs",
                         color_discrete_sequence=px.colors.qualitative.Set1)
     fig_defense.update_layout(height=400)
-    st.plotly_chart(fig_defense, use_container_width=True)
+    st.plotly_chart(fig_defense, width='stretch')
 
 with tab4:
     st.header("Raw Data")
     
     # Full Data Table
     st.subheader("Complete Player Statistics")
-    st.dataframe(filtered_df.style.format(subset=numeric_columns, formatter='{:.2f}'), use_container_width=True)
+    st.dataframe(filtered_df.style.format(subset=numeric_columns, formatter='{:.2f}'), width='stretch')
 
 # Footer
 st.markdown("---")
