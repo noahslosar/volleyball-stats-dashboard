@@ -195,7 +195,9 @@ with tab3:
         st.subheader(f"Detailed Statistics for {selected_player}")
         player_stats = filtered_df[filtered_df['Player'] == selected_player].T
         player_stats.columns = ['Value']
-        st.dataframe(player_stats.style.format("{:.2f}"))
+        # Only format numeric values, leave strings as-is
+        numeric_cols = player_stats.index.difference(['Player', 'Position', 'Jersey'])
+        st.dataframe(player_stats.style.format({col: "{:.2f}" for col in numeric_cols}))
     
     # Top Defensive Players
     st.subheader("Top Defensive Players")
