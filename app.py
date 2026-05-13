@@ -68,25 +68,13 @@ selected_player = st.sidebar.selectbox(
     key="player_select"
 )
 
-# 4. Chart Type Radio Buttons
-chart_type = st.sidebar.radio(
-    "Chart Style for Top Players:",
-    ["Bar Chart", "Horizontal Bar", "Line Chart"],
-    key="chart_type_radio"
-)
 
-# 5. Data View Toggle
-show_percentages = st.sidebar.checkbox(
-    "Show Percentage Stats Only",
-    value=False,
-    key="percentage_toggle"
-)
 
 # Apply filters
 filtered_df = df[df['Position'].isin(selected_positions) & (df['GP'] >= min_games)]
 
 # ============================================================================
-# TABS - Main Navigation (6th Interactive Element)
+# TABS - Main Navigation (4th Interactive Element)
 # ============================================================================
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📊 Overview", "🏐 Attack Stats", "🎯 Serve Stats", "🛡️ Defense Stats", "📈 Position Analysis", "📊 Raw Data"])
 
