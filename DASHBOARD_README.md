@@ -1,7 +1,7 @@
 # Volleyball Statistics Dashboard - Project Summary
 
 ## Overview
-I've created a comprehensive interactive Streamlit dashboard (`app.py`) that visualizes your volleyball player statistics from the `volleyball_stats.db` database with **7+ interactive visualizations** including a map.
+I've created a comprehensive interactive Streamlit dashboard (`app.py`) that visualizes your volleyball player statistics from the `volleyball_stats.db` database.
 
 ## Visualizations Included
 
@@ -32,19 +32,12 @@ I've created a comprehensive interactive Streamlit dashboard (`app.py`) that vis
 - Displays both percentages and labels
 - Uses Set3 pastel color palette
 
-### 6. **Team Locations Map** (Interactive Folium Map) ⭐
-- Shows volleyball team venues across the USA
-- Interactive markers for major tournament locations
-- Includes: Lincoln NE, Austin TX, Palo Alto CA, Boulder CO, Stanford CA
-- Color-coded markers for visual appeal
-- Fully interactive - you can pan and zoom
-
-### 7. **Defensive Stats - Top Player Radar Chart** (Radar Chart)
+### 6. **Defensive Stats - Top Player Radar Chart** (Radar Chart)
 - Shows defensive capabilities for the top defensive player
 - Metrics: Digs, Dig %, Pass Quality %, and Critical Rate %
 - Visual representation of player strengths
 
-### 8. **Full Statistics Table** (Interactive Data Table)
+### 7. **Full Statistics Table** (Interactive Data Table)
 - Displays all player data with formatted numbers
 - Searchable and sortable
 - Shows all 31 columns from the database
@@ -64,17 +57,6 @@ I've created a comprehensive interactive Streamlit dashboard (`app.py`) that vis
 ✅ **Hover Information**: Interactive charts show detailed info on hover
 ✅ **Professional Layout**: Clean, organized sections with headers
 
-## How to Run
-
-```bash
-# Make sure you're in the project directory
-cd C:\Users\Admin\PycharmProjects\StreamlitDatabase
-
-# Run the Streamlit app
-streamlit run app.py
-```
-
-The app will open at: `http://localhost:8501`
 
 ## Database Integration
 - Automatically clones the GitHub repository if not present
