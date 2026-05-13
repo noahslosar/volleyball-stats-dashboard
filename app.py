@@ -17,6 +17,9 @@ conn = sqlite3.connect(db_file_path)
 df = pd.read_sql_query("SELECT * FROM player_stats", conn)
 conn.close()
 
+# Convert GP to numeric for filtering (needed before filtering)
+df['GP'] = pd.to_numeric(df['GP'], errors='coerce')
+
 # Remove the unwanted player (name "4" with position "None")
 df = df[~((df['Last Name'] == '4') & (df['Position'] == 'None'))]
 
