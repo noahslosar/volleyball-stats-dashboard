@@ -20,6 +20,9 @@ conn.close()
 # Remove the unwanted player (name "4" with position "None")
 df = df[~((df['Last Name'] == '4') & (df['Position'] == 'None'))]
 
+# Remove one of the Burns players (the one with fewer games played)
+df = df[~((df['Last Name'] == 'Burns') & (df['GP'] == 1))]
+
 # Clean up the data - convert columns to numeric where applicable
 numeric_columns = df.columns[3:]  # Skip #, Last Name, Position
 for col in numeric_columns:
